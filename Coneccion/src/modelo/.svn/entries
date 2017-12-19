@@ -1,0 +1,41 @@
+10
+
+dir
+5
+http://pvd-pm-03-01.aws.smartcloud.cl/project01/src/modelo
+http://pvd-pm-03-01.aws.smartcloud.cl/project01
+
+
+
+2017-12-18T22:21:07.570264Z
+1
+usuario01
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+9a3999dd-8090-e64b-8169-c87f94145244
+
+Modelo.java
+file
+
+
+
+
+
+0756fa3b368913ecebaa8f19e8eded2c
+2017-12-18T22:21:07.570264Z
+1
+usuario01
+has-props
+
