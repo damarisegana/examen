@@ -13,7 +13,7 @@ import java.sql.*;
 public class Conexion {
  /* DATOS PARA LA CONEXION */
   /** base de datos por defecto es test*/
-  private String db = "taller3";
+  private String db = "examen";
   /** usuario */
   private String user = "root";
   /** contraseña de MySql*/

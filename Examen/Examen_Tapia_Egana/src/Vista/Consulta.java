@@ -29,8 +29,6 @@ public class Consulta extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnconsulta1 = new javax.swing.JButton();
-        btnconsulta2 = new javax.swing.JButton();
         btnconsulta4 = new javax.swing.JButton();
         btnconsulta5 = new javax.swing.JButton();
         btnconsulta6 = new javax.swing.JButton();
@@ -47,10 +45,6 @@ public class Consulta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Seleccione una Consulta a realizar:");
-
-        btnconsulta1.setText("Consulta 1");
-
-        btnconsulta2.setText("Consulta 2");
 
         btnconsulta4.setText("Consulta 4");
 
@@ -103,8 +97,6 @@ public class Consulta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnconsulta2)
-                            .addComponent(btnconsulta1)
                             .addComponent(btnconsulta4)
                             .addComponent(btnconsulta5)
                             .addComponent(btnconsulta6))))
@@ -115,11 +107,7 @@ public class Consulta extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addComponent(btnconsulta1)
-                .addGap(18, 18, 18)
-                .addComponent(btnconsulta2)
-                .addGap(11, 11, 11)
+                .addGap(104, 104, 104)
                 .addComponent(btnconsulta4)
                 .addGap(18, 18, 18)
                 .addComponent(btnconsulta5)
@@ -172,11 +160,9 @@ public class Consulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnconsulta1;
-    public javax.swing.JButton btnconsulta2;
     public javax.swing.JButton btnconsulta4;
-    private javax.swing.JButton btnconsulta5;
-    private javax.swing.JButton btnconsulta6;
+    public javax.swing.JButton btnconsulta5;
+    public javax.swing.JButton btnconsulta6;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JMenu jMenu1;
     public javax.swing.JMenu jMenu2;
