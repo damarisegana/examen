@@ -44,9 +44,8 @@ public class Coordinador implements ActionListener, MouseListener {
         _ingresarLimpiar,
         _modificarSeleccionar,
         _modificarModificar,
-        _consulta1,
+       
         _consulta2,
-        _consulta4,
         _consulta5,
         _consulta6
     }
@@ -131,6 +130,10 @@ public class Coordinador implements ActionListener, MouseListener {
 
         this.vistaConsulta.menumostrar.setActionCommand("_menuMostrar");
         this.vistaConsulta.menumostrar.addActionListener(this);
+        
+        this.vistaMostrar.menumostrar.setActionCommand("_menuMostrar");
+        this.vistaMostrar.menumostrar.addActionListener(this);
+        
 
         //menumodificar
         this.vistaInicio.menumodificar.setActionCommand("_menuModificar");
@@ -183,15 +186,11 @@ public class Coordinador implements ActionListener, MouseListener {
         this.vistaModificar.btnmodificar.setActionCommand("_modificarModificar");
         this.vistaModificar.btnmodificar.addActionListener(this);
 
-//        // Consulta 
-//        this.vistaConsulta.btnconsulta1.setActionCommand("_consulta1");
-//        this.vistaConsulta.btnconsulta1.addActionListener(this);
+//        // Consultas 
+//       
 //
-//        this.vistaConsulta.btnconsulta2.setActionCommand("_consulta2");
-//        this.vistaConsulta.btnconsulta2.addActionListener(this);
-//
-//        this.vistaConsulta.btnconsulta4.setActionCommand("_consulta4");
-//        this.vistaConsulta.btnconsulta4.addActionListener(this);
+        this.vistaConsulta.btnconsulta2.setActionCommand("_consulta2");
+        this.vistaConsulta.btnconsulta2.addActionListener(this);
 //
 //        this.vistaConsulta.btnconsulta5.setActionCommand("_consulta5");
 //        this.vistaConsulta.btnconsulta5.addActionListener(this);
@@ -245,14 +244,14 @@ public class Coordinador implements ActionListener, MouseListener {
                 this.vistaMostrar.tablaproducto.setModel(this.modelo.MostrarEmp());
                 break;
                 
-//            case _menuConsulta:
-//                this.vistaConsulta.setVisible(true);
-//                this.vistaInicio.setVisible(false);
-//                this.vistaBuscarEliminar.setVisible(false);
-//                this.vistaIngresar.setVisible(false);
-//                this.vistaMostrar.setVisible(false);
-//                this.vistaModificar.setVisible(false);
-//                break;
+            case _menuConsulta:
+                this.vistaConsulta.setVisible(true);
+                this.vistaInicio.setVisible(false);
+                this.vistaBuscarEliminar.setVisible(false);
+                this.vistaIngresar.setVisible(false);
+                this.vistaMostrar.setVisible(false);
+                this.vistaModificar.setVisible(false);
+                break;
                 
             case _buscarEliminarBuscar:
                 if (this.modelo.Validar2(this.vistaBuscarEliminar.txtcodigo_buscar.getText())) {
@@ -357,37 +356,22 @@ public class Coordinador implements ActionListener, MouseListener {
                 }
                 break;
 
-//            case _consulta1:
-//                if (this.modelo.consulta1()) {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 1 Ejecutada, Drama Agregado.");
-//                } else {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 1 No Ejecutada, Drama no Agregado.");
-//                }
-//                break;
-//
-//            case _consulta2:
-//                if (this.modelo.consulta2()) {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 2 Ejecutada, Comedia Agregada.");
-//                } else {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 2 No Ejecutada, Comedia no Agregada.");
-//                }
-//                break;
-//
-//            case _consulta4:
-//                this.vistaInicio.setVisible(false);
-//                this.vistaConsulta.setVisible(false);
-//                this.vistaBuscarEliminar.setVisible(false);
-//                this.vistaIngresar.setVisible(false);
-//                this.vistaModificar.setVisible(false);
-//                this.vistaMostrar.setVisible(true);
-//                this.vistaMostrar.tablaproducto.setModel(this.modelo.consulta4());
-//                break;
+ 
+            case _consulta2:
+                this.vistaInicio.setVisible(false);
+                this.vistaConsulta.setVisible(false);
+                this.vistaBuscarEliminar.setVisible(false);
+                this.vistaIngresar.setVisible(false);
+                this.vistaModificar.setVisible(false);
+                this.vistaMostrar.setVisible(true);
+                this.vistaMostrar.tablaproducto.setModel(this.modelo.consulta2());
+                break;
 //                
 //            case _consulta5:
 //                if (this.modelo.consulta5()) {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 5 Ejecutada, Pelicula(s) Eliminadas");
+//                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 2 Ejecutada, Pelicula(s) Eliminadas");
 //                } else {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 5 No Ejecutada, Pelicula(s) No Eliminadas.");
+//                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 2 No Ejecutada, Pelicula(s) No Eliminadas.");
 //                }
 //                break;
 //

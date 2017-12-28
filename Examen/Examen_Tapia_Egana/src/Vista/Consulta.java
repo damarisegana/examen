@@ -29,7 +29,7 @@ public class Consulta extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnconsulta4 = new javax.swing.JButton();
+        btnconsulta2 = new javax.swing.JButton();
         btnconsulta5 = new javax.swing.JButton();
         btnconsulta6 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -46,7 +46,7 @@ public class Consulta extends javax.swing.JFrame {
 
         jLabel1.setText("Seleccione una Consulta a realizar:");
 
-        btnconsulta4.setText("Consulta 4");
+        btnconsulta2.setText("Consulta 2");
 
         btnconsulta5.setText("Consulta 5");
 
@@ -97,7 +97,7 @@ public class Consulta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnconsulta4)
+                            .addComponent(btnconsulta2)
                             .addComponent(btnconsulta5)
                             .addComponent(btnconsulta6))))
                 .addContainerGap(51, Short.MAX_VALUE))
@@ -108,10 +108,10 @@ public class Consulta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(104, 104, 104)
-                .addComponent(btnconsulta4)
-                .addGap(18, 18, 18)
+                .addComponent(btnconsulta2)
+                .addGap(11, 11, 11)
                 .addComponent(btnconsulta5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnconsulta6)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
@@ -160,7 +160,7 @@ public class Consulta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnconsulta4;
+    public javax.swing.JButton btnconsulta2;
     public javax.swing.JButton btnconsulta5;
     public javax.swing.JButton btnconsulta6;
     private javax.swing.JLabel jLabel1;

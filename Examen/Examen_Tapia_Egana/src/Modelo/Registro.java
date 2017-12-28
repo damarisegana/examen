@@ -382,12 +382,12 @@ public class Registro extends Conexion.Conexion {
     }
 
     
-    public TableModel consulta4() {
+    public TableModel consulta2() {
 
         DefaultTableModel tablemodel = new DefaultTableModel();
         int producto = 0;
         try {
-            PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM empleados where id_categoria = 10 ");
+            PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM empleados where nom_depto = 'Redes'; ");
             ResultSet res = pstm.executeQuery();
             res.next();
             producto = res.getInt("total");
@@ -396,14 +396,13 @@ public class Registro extends Conexion.Conexion {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-
         if (producto == 0) {
             JOptionPane.showMessageDialog(null, "Error: No hay Películas en la Categoría Romance.");
         } else {
 
             Object[][] data = new String[producto][9];
             try {
-                PreparedStatement pstm = this.getConexion().prepareStatement("select pelicula.codigo, pelicula.nombre, pelicula.precio, categoria.descripcion, pelicula.formato4k from pelicula left join categoria on pelicula.id_categoria=categoria.id where categoria.id = 10 ;");
+                PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM empleados WHERE nom_depto = 'Redes';  ");
                 ResultSet res = pstm.executeQuery();
                 int i = 0;
                 while (res.next()) {
@@ -429,7 +428,7 @@ public class Registro extends Conexion.Conexion {
     }
 
     public boolean consulta5() {
-        String q = " DELETE FROM pelicula WHERE precio>2000;";
+        String q = " DELETE FROM pelicula WHERE nom_depto ='Redes';";
         try {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
