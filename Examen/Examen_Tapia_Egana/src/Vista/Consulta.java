@@ -31,7 +31,7 @@ public class Consulta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnconsulta2 = new javax.swing.JButton();
         btnconsulta3 = new javax.swing.JButton();
-        btnconsulta6 = new javax.swing.JButton();
+        btnconsulta4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menusalir = new javax.swing.JMenuItem();
@@ -50,7 +50,7 @@ public class Consulta extends javax.swing.JFrame {
 
         btnconsulta3.setText("Consulta 3");
 
-        btnconsulta6.setText("Consulta 6");
+        btnconsulta4.setText("Consulta 4");
 
         jMenu1.setText("Archivo");
 
@@ -99,7 +99,7 @@ public class Consulta extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnconsulta2)
                             .addComponent(btnconsulta3)
-                            .addComponent(btnconsulta6))))
+                            .addComponent(btnconsulta4))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,7 +112,7 @@ public class Consulta extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnconsulta3)
                 .addGap(18, 18, 18)
-                .addComponent(btnconsulta6)
+                .addComponent(btnconsulta4)
                 .addContainerGap(117, Short.MAX_VALUE))
         );
 
@@ -162,7 +162,7 @@ public class Consulta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnconsulta2;
     public javax.swing.JButton btnconsulta3;
-    public javax.swing.JButton btnconsulta6;
+    public javax.swing.JButton btnconsulta4;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JMenu jMenu1;
     public javax.swing.JMenu jMenu2;

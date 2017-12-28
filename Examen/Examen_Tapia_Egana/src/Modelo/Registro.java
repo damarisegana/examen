@@ -440,8 +440,8 @@ public class Registro extends Conexion.Conexion {
         return false;
     }
 
-    public boolean consulta6() {
-        String q = " UPDATE pelicula SET nombre = CONCAT ('P',nombre) WHERE codigo > 1;";
+    public boolean consulta4() {
+        String q = " UPDATE empleados SET sueldo_bruto = sueldo_bruto * 1.1;";
         try {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();

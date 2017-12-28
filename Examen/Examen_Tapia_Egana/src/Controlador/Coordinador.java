@@ -47,7 +47,7 @@ public class Coordinador implements ActionListener, MouseListener {
        
         _consulta2,
         _consulta3,
-        _consulta6
+        _consulta4
     }
 
     public Coordinador(Inicio vistaInicio, Buscar_Eliminar vistaBuscarEliminar, Ingresar vistaIngresar, Modificar vistaModificar, Listar vistaMostrar, Consulta vistaConsulta) {
@@ -194,9 +194,9 @@ public class Coordinador implements ActionListener, MouseListener {
 
         this.vistaConsulta.btnconsulta3.setActionCommand("_consulta3");
         this.vistaConsulta.btnconsulta3.addActionListener(this);
-//
-//        this.vistaConsulta.btnconsulta6.setActionCommand("_consulta6");
-//        this.vistaConsulta.btnconsulta6.addActionListener(this);
+
+        this.vistaConsulta.btnconsulta4.setActionCommand("_consulta4");
+        this.vistaConsulta.btnconsulta4.addActionListener(this);
 
     }
 
@@ -369,19 +369,19 @@ public class Coordinador implements ActionListener, MouseListener {
                 
             case _consulta3:
                 if (this.modelo.consulta3()) {
-                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 3 Ejecutada, Empleados(s) Eliminadas");
+                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 3 Ejecutada, Empleados(s) Eliminados");
                 } else {
-                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 3 No Ejecutada, Empleados(s) No Eliminadas.");
+                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 3 No Ejecutada, Empleados(s) No Eliminados.");
                 }
                 break;
-//
-//            case _consulta6:
-//                if (this.modelo.consulta6()) {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 6 Ejecutada, Nombre de Peliculas Actualizado.");
-//                } else {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 6 Ejecutada, Nombre de Peliculas No Actualizado");
-//                }
-//                break;
+
+            case _consulta4:
+                if (this.modelo.consulta4()) {
+                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 4 Ejecutada, Sueldos Brutos Actualizado.");
+                } else {
+                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 4 Ejecutada, Sueldos Brutos No Actualizado");
+                }
+                break;
 
         }
     }

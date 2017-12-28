@@ -112,7 +112,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnconsulta2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnconsulta3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnconsulta6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnconsulta4" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -130,7 +130,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnconsulta3" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnconsulta6" min="-2" max="-2" attributes="0"/>
+              <Component id="btnconsulta4" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="117" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -158,9 +158,9 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="btnconsulta6">
+    <Component class="javax.swing.JButton" name="btnconsulta4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Consulta 6"/>
+        <Property name="text" type="java.lang.String" value="Consulta 4"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
