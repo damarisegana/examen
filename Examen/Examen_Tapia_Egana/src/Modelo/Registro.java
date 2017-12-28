@@ -13,19 +13,19 @@ import javax.swing.table.TableModel;
 //ver las validaciones.
 public class Registro extends Conexion.Conexion {
 
-    private String[] columNames = {"Código", "Nombre", "Precio", "Categoría", "4K"};
+    private String[] columNames = {"Código", "Rut","Nombre", "Apellido", "Celular", "Email", "Sueldo Bruto", "Estado Civil", "Departamento"};
     public TableModel ModificarSeleccionar;
 
     public Registro() {
         super();
     }
 
-    public boolean ValidarPel(String codigo, String nombre, String precio, int idcategoria, String formato4k) {
+    public boolean ValidarEmp(String codigo, String rut, String nombre, String apellido, String celular, String email, String sueldo, int ecivil, String depto) {
 
         int validacioncodigo = 0;
         int codigolargo = 0;
-        int validacionprecio = 0;
-        int validacioncantidad = 0;
+        int validacioncelu = 0;
+        int validacionsueldo = 0;
         int validacioncodigo2 = 0;
         String existeCodigo = "";
 
@@ -34,25 +34,23 @@ public class Registro extends Conexion.Conexion {
             return false;
         } else if (!codigo.equals("")) {
             try {
-
                 float validacodigo = Float.parseFloat(codigo);
                 validacioncodigo = 1;
             } catch (NumberFormatException f) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico entre 10000 y 99999");
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico mayor a 0 o menor o igual 100");
             }
         }
 
         if (validacioncodigo == 1) {
             int codigonum = Integer.parseInt(codigo);
-
-            if (codigonum < 10000 || codigonum > 99999) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico entre 10000 y 99999.");
+            
+            if (codigonum <= 0 || codigonum > 100) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico mayor a 0 o menor o igual 100");
                 return false;
-            } else if (codigonum >= 10000 && codigonum <= 99999) {
-
+            } else if (codigonum > 0 && codigonum <= 100) {
                 try {
                     //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
-                    PreparedStatement pstm = this.getConexion().prepareStatement("SELECT codigo FROM pelicula where codigo =" + codigo + ";");
+                    PreparedStatement pstm = this.getConexion().prepareStatement("SELECT codigo FROM empleados where codigo =" + codigo + ";");
                     ResultSet res = pstm.executeQuery();
                     int i = 0;
                     while (res.next()) {
@@ -68,49 +66,82 @@ public class Registro extends Conexion.Conexion {
             if (!existeCodigo.equals("")) {
                 JOptionPane.showMessageDialog(null, "Error: Código ingresado ya existe");
                 return false;
+            } else if (rut.equals(""))   {
+             JOptionPane.showMessageDialog(null, "Error: Ingrese Run.");
+                return false;
             } else if (nombre.equals("")) {
                 JOptionPane.showMessageDialog(null, "Error: Ingrese Nombre.");
                 return false;
-            } else if (nombre.length() < 3) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Nombre Válido.");
+            
+            } else if (apellido.equals("")) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Apellido.");
                 return false;
-            } else if (precio.equals("")) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Precio.");
-                return false;
-            } else if (!precio.equals("")) {
+            } else if (celular.equals("")){
+            JOptionPane.showMessageDialog(null, "Error: Ingrese Celular.");
+            return false;
+            } else if (!celular.equals("")) {
                 try {
-                    float validaprecio = Float.parseFloat(precio);
-                    validacionprecio = 1;
+                    float validacelu = Float.parseFloat(celular);
+                    validacioncelu = 1;
                 } catch (NumberFormatException f) {
-                    JOptionPane.showMessageDialog(null, "Error: Ingrese Precio Válido");
+                    JOptionPane.showMessageDialog(null, "Error: Ingrese Celular Válido");
                 }
             }
-            if (validacionprecio == 1) {
-                if (Integer.parseInt(precio) < 1000) {
-                    JOptionPane.showMessageDialog(null, "Error: Ingrese Precio Mayor 1000.");
+            if (validacioncelu == 1) {
+                if (celular.length()!=9) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingrese Número Celular de 9 dígitos");
                     return false;
-                } else if (idcategoria == 0) {
-                    JOptionPane.showMessageDialog(null, "Error: Ingrese Id de Categoría");
+                } else if (sueldo.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingrese Sueldo");
                     return false;
-                } else if (formato4k.equals("Ingrese Formato")) {
-                    JOptionPane.showMessageDialog(null, "Error: Ingrese Formato de la Película");
+                }else if (!sueldo.equals("")){
+                try {
+                    float validasueldo = Float.parseFloat(sueldo);
+                    validacionsueldo = 1;
+                } catch (NumberFormatException f) {
+                    JOptionPane.showMessageDialog(null, "Ingrese Sueldo Igual o Mayor a $120.000");
                     return false;
+                }
+                
+                }    
+                if (validacionsueldo==1) {
+                int sueldonum=Integer.parseInt(sueldo);
+                
+                if (sueldonum<120000) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Sueldo Igual o Mayor a $120.000");
+                return false;
+                } else if (ecivil==0){
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Estado Civil");
+                return false;
+                } else if (depto.equals("Ingrese Departamento"))
+                {JOptionPane.showMessageDialog(null, "Error: Ingrese Departamento");
+                
+                return false;
                 } else {
-                    return true;
+                return true;
                 }
-            }
+      
         }
+    } }return false;}
 
-        return false;
-    }
-
-    public boolean IngresarPel(String codigo, String nombre, String precio, int idcategoria, String formato4k) {
-
-        if (ValidarPel(codigo, nombre, precio, idcategoria, formato4k)) {
+    
+    public boolean IngresarEmp(String codigo, String nombre, String apellido, String rut,String sueldo, String celular, String mail, int estadoCivil, String departamento) {
+        String eCivil;
+        
+        if (estadoCivil==1) {
+            eCivil="C";
+        } else if (estadoCivil==2){
+            eCivil="S";
+        } else {
+            eCivil="V";
+        }
+        
+        if (ValidarEmp( codigo,  rut,  nombre,  apellido,  celular,  mail,  sueldo,  estadoCivil,  departamento)) {
             int codigoint = Integer.parseInt(codigo);
-            int precioint = Integer.parseInt(precio);
-            String q = " INSERT INTO pelicula ( codigo , nombre , precio, id_categoria, formato4k) "
-                    + "VALUES (" + codigoint + ",'" + nombre + "'," + precioint + "," + idcategoria + ", '" + formato4k + "');";
+            int celularint = Integer.parseInt(celular);
+            int sueldoint = Integer.parseInt(sueldo);
+            String q = " INSERT INTO empleados ( codigo , rut, nombre, apellido, celular, email, sueldo_bruto, est_civil, nom_depto) "
+                    + "VALUES (" + codigoint + ",'" + rut + "','"+ nombre + "','" + apellido + "'," + celular + ",'" + mail + "'," + sueldo + ",'" + estadoCivil + "','" + departamento  + "');";
             //se ejecuta la consulta
             try {
                 if (this.getConexion() == null) {
@@ -130,11 +161,11 @@ public class Registro extends Conexion.Conexion {
         return false;
     }
 
-    public boolean EliminarPel(String codigo) {
+    public boolean EliminarEmp(String codigo) {
         boolean res = false;
         int codigoint = Integer.parseInt(codigo);
 
-        String q = " DELETE FROM pelicula WHERE codigo=" + codigoint + ";";
+        String q = " DELETE FROM empleados WHERE codigo=" + codigoint + ";";
         try {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
@@ -147,14 +178,14 @@ public class Registro extends Conexion.Conexion {
     }
 
     //mensaje de que el codigo no exista!!
-    public TableModel BuscarPel(String codigo) {
+    public TableModel BuscarEmp(String codigo) {
         DefaultTableModel tablemodel = new DefaultTableModel();
         int producto = 0;
         if (codigo.equals("")) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese Código a Buscar");
         } else {
             try {
-                PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM pelicula");
+                PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM empleados");
                 ResultSet res = pstm.executeQuery();
                 res.next();
                 producto = res.getInt("total");
@@ -162,17 +193,21 @@ public class Registro extends Conexion.Conexion {
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
             }
-            Object[][] data = new String[producto][6];
+            Object[][] data = new String[producto][9];
             try {
-                PreparedStatement pstm = this.getConexion().prepareStatement("select pelicula.codigo, pelicula.nombre, pelicula.precio, pelicula.id_categoria, pelicula.formato4k from pelicula left join categoria on pelicula.id_categoria=categoria.id where pelicula.codigo=" + codigo + ";");
+                PreparedStatement pstm = this.getConexion().prepareStatement("select * from empleados where codigo=" + codigo + ";");
                 ResultSet res = pstm.executeQuery();
                 int i = 0;
                 while (res.next()) {
                     data[i][0] = res.getString("codigo");
-                    data[i][1] = res.getString("nombre");
-                    data[i][2] = res.getString("precio");
-                    data[i][3] = res.getString("id_categoria");
-                    data[i][4] = res.getString("formato4k");
+                    data[i][1] = res.getString("rut");
+                    data[i][2] = res.getString("nombre");
+                    data[i][3] = res.getString("apellido");
+                    data[i][4] = res.getString("celular");
+                    data[i][5] = res.getString("email");
+                    data[i][6] = res.getString("sueldo_bruto");
+                    data[i][7] = res.getString("est_civil");
+                    data[i][8] = res.getString("nom_depto");
                     i++;
                 }
                 res.close();
@@ -184,11 +219,11 @@ public class Registro extends Conexion.Conexion {
         return tablemodel;
     }
 
-    public TableModel MostrarPel() {
+    public TableModel MostrarEmp() {
         DefaultTableModel tablemodel = new DefaultTableModel();
         int producto = 0;
         try {
-            PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM pelicula");
+            PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM empleados");
             ResultSet res = pstm.executeQuery();
             res.next();
             producto = res.getInt("total");
@@ -198,16 +233,20 @@ public class Registro extends Conexion.Conexion {
         }
         Object[][] data = new String[producto][9];
         try {
-            PreparedStatement pstm = this.getConexion().prepareStatement("select pelicula.codigo, pelicula.nombre, pelicula.precio, categoria.descripcion, pelicula.formato4k from pelicula left join categoria on pelicula.id_categoria=categoria.id;");
+            PreparedStatement pstm = this.getConexion().prepareStatement("select * from empleados;");
             ResultSet res = pstm.executeQuery();
             int i = 0;
             while (res.next()) {
                 data[i][0] = res.getString("codigo");
-                data[i][1] = res.getString("nombre");
-                data[i][2] = res.getString("precio");
-                data[i][3] = res.getString("descripcion");
-                data[i][4] = res.getString("formato4k");
-                i++;
+                    data[i][1] = res.getString("rut");
+                    data[i][2] = res.getString("nombre");
+                    data[i][3] = res.getString("apellido");
+                    data[i][4] = res.getString("celular");
+                    data[i][5] = res.getString("email");
+                    data[i][6] = res.getString("sueldo_bruto");
+                    data[i][7] = res.getString("est_civil");
+                    data[i][8] = res.getString("nom_depto");
+                    i++;
             }
             res.close();
             tablemodel.setDataVector(data, columNames);
@@ -217,10 +256,10 @@ public class Registro extends Conexion.Conexion {
         return tablemodel;
     }
 
-    public boolean ModificarPel(int codigo, String nombre, String precio, int idcategoria, String formato4k) {
+    public boolean ModificarEmp(String codigo, String nombre, String apellido, String rut,String sueldo, String celular, String mail, int estadoCivil, String departamento) {
 
-        if (Validar3(nombre, precio, idcategoria, formato4k)) {
-            String q = " UPDATE pelicula SET nombre = '" + nombre + "' , precio = " + precio + ", id_categoria=" + idcategoria + ", formato4k='" + formato4k + "' WHERE codigo =" + codigo + ";";
+        if (Validar3( rut,  nombre,  apellido,  celular,  mail,  sueldo,  estadoCivil,  departamento)) {
+            String q = " UPDATE empleados SET nombre = '" + nombre + "' , rut = " + rut+ "' , apellido = " + apellido + ", celular=" + celular + ", email='" + mail + ", sueldo_bruto='" + sueldo + ", est_civil='" + estadoCivil +  ", nom_depto='" + departamento+"' WHERE codigo =" + codigo + ";";
             try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 pstm.execute();
@@ -238,7 +277,7 @@ public class Registro extends Conexion.Conexion {
     public boolean Validar2(String codigo) {
         int numcodigo = 0;
         int validacioncodigo = 0;
-        String pelicula = "";
+        String empleado = "";
 
         if (codigo.equals("")) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese Código.");
@@ -248,21 +287,21 @@ public class Registro extends Conexion.Conexion {
                 float validacodigo = Float.parseFloat(codigo);
                 validacioncodigo = 1;
             } catch (NumberFormatException f) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico entre 10000 y 99999");
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico mayor a 0 y menor o igual a 100");
             }
         }
         if (validacioncodigo == 1) {
             numcodigo = Integer.parseInt(codigo);
-            if (numcodigo < 10000 || numcodigo > 99999) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico entre 10000 y 99999.");
+            if (numcodigo <=0  || numcodigo > 100) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico mayor a 0 y menor o igual a 100");
                 return false;
-            } else if (numcodigo >= 10000 && numcodigo <= 99999) {
+            } else if (numcodigo >0 && numcodigo <= 100) {
                 try {
-                    PreparedStatement pstm = this.getConexion().prepareStatement("SELECT pelicula.codigo FROM pelicula where pelicula.codigo =" + codigo + ";");
+                    PreparedStatement pstm = this.getConexion().prepareStatement("SELECT empleados.codigo FROM empleados where empleados.codigo =" + codigo + ";");
                     ResultSet res = pstm.executeQuery();
                     int i = 0;
                     while (res.next()) {
-                        pelicula = res.getString("codigo");
+                        empleado = res.getString("codigo");
                         i++;
                     }
                     res.close();
@@ -270,7 +309,7 @@ public class Registro extends Conexion.Conexion {
                     System.err.println(e.getMessage());
                 }
             }
-            if (!pelicula.equals("")) {
+            if (!empleado.equals("")) {
                 return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Error: El Código Ingresado no Existe");
@@ -279,65 +318,76 @@ public class Registro extends Conexion.Conexion {
         return false;
     }
 
-    public boolean Validar3(String nombre, String precio, int idcategoria, String formato4k) {
-        int validacionprecio = 0;
+    public boolean Validar3(String rut, String nombre, String apellido, String celular, String email, String sueldo, int ecivil, String depto) {
+        int validacioncelu = 0;
+        int validacionsueldo=0;
 
-        if (nombre.equals("")) {
-            JOptionPane.showMessageDialog(null, "Error: Ingrese Nombre.");
+        if (rut.equals(""))   {
+             JOptionPane.showMessageDialog(null, "Error: Ingrese Run.");
+                return false;
+            } else if (nombre.equals("")) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Nombre.");
+                return false;
+            
+            } else if (apellido.equals("")) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Apellido.");
+                return false;
+            } else if (celular.equals("")){
+            JOptionPane.showMessageDialog(null, "Error: Ingrese Celular.");
             return false;
-        } else if (nombre.length() < 3) {
-            JOptionPane.showMessageDialog(null, "Error: Ingrese Nombre Válido.");
-            return false;
-        } else if (precio.equals("")) {
-            JOptionPane.showMessageDialog(null, "Error: Ingrese Precio.");
-            return false;
-        } else if (!precio.equals("")) {
-            try {
-                float validaprecio = Float.parseFloat(precio);
-                validacionprecio = 1;
-            } catch (NumberFormatException f) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Precio Válido");
+            } else if (!celular.equals("")) {
+                try {
+                    float validacelu = Float.parseFloat(celular);
+                    validacioncelu = 1;
+                } catch (NumberFormatException f) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingrese Precio Válido");
+                }
             }
-        }
-        if (validacionprecio == 1) {
-            if (Integer.parseInt(precio) <= 1000) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Precio Mayor a 1000.");
+            if (validacioncelu == 1) {
+                if (celular.length()!=9) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingrese Número Celular de 9 dígitos");
+                    return false;
+                } else if (sueldo.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Error: Ingrese Sueldo");
+                    return false;
+                }else if (!sueldo.equals("")){
+                try {
+                    float validasueldo = Float.parseFloat(sueldo);
+                    validacionsueldo = 1;
+                } catch (NumberFormatException f) {
+                    JOptionPane.showMessageDialog(null, "Ingrese Sueldo Igual o Mayor a $120.000");
+                }
+                
+                }    
+                if (validacionsueldo==1) {
+                int sueldonum=Integer.parseInt(sueldo);
+                
+                if (sueldonum<120000) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Sueldo Igual o Mayor a $120.000");
                 return false;
-            } else if (idcategoria == 0) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Categoria");
+                } else if (ecivil==0){
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Estado Civil");
                 return false;
-            } else if (formato4k.equals("Ingrese Formato")) {
-                JOptionPane.showMessageDialog(null, "Error: Ingrese Formato 4k ");
+                } else if (depto.equals(""))
+                {JOptionPane.showMessageDialog(null, "Error: Ingrese Departamento");}
                 return false;
-            } else {
+                } else {
                 return true;
-            }
+                }
+                    
+                   
         }
-        return false;
+
+       return false;
     }
 
-    public boolean consulta1() {
-
-        if (IngresarPel("12001", "Titanic", "16000", 6, "N")) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean consulta2() {
-
-        if (IngresarPel("12003", "Chicas Pesadas", "17000", 4, "S")) {
-            return true;
-        }
-        return false;
-    }
-
+    
     public TableModel consulta4() {
 
         DefaultTableModel tablemodel = new DefaultTableModel();
         int producto = 0;
         try {
-            PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM pelicula where id_categoria = 10 ");
+            PreparedStatement pstm = this.getConexion().prepareStatement("SELECT count(*) as total FROM empleados where id_categoria = 10 ");
             ResultSet res = pstm.executeQuery();
             res.next();
             producto = res.getInt("total");
@@ -357,11 +407,15 @@ public class Registro extends Conexion.Conexion {
                 ResultSet res = pstm.executeQuery();
                 int i = 0;
                 while (res.next()) {
-                    data[i][0] = res.getString("codigo");
-                    data[i][1] = res.getString("nombre");
-                    data[i][2] = res.getString("precio");
-                    data[i][3] = res.getString("descripcion");
-                    data[i][4] = res.getString("formato4k");
+                   data[i][0] = res.getString("codigo");
+                    data[i][1] = res.getString("rut");
+                    data[i][2] = res.getString("nombre");
+                    data[i][3] = res.getString("apellido");
+                    data[i][4] = res.getString("celular");
+                    data[i][5] = res.getString("email");
+                    data[i][6] = res.getString("sueldo_bruto");
+                    data[i][7] = res.getString("est_civil");
+                    data[i][8] = res.getString("nom_depto");
                     i++;
                 }
                 res.close();
