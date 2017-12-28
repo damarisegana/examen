@@ -427,8 +427,8 @@ public class Registro extends Conexion.Conexion {
 
     }
 
-    public boolean consulta5() {
-        String q = " DELETE FROM pelicula WHERE nom_depto ='Redes';";
+    public boolean consulta3() {
+        String q = " DELETE FROM empleados WHERE sueldo_bruto=120000;";
         try {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();

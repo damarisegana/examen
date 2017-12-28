@@ -30,7 +30,7 @@ public class Consulta extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnconsulta2 = new javax.swing.JButton();
-        btnconsulta5 = new javax.swing.JButton();
+        btnconsulta3 = new javax.swing.JButton();
         btnconsulta6 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -48,7 +48,7 @@ public class Consulta extends javax.swing.JFrame {
 
         btnconsulta2.setText("Consulta 2");
 
-        btnconsulta5.setText("Consulta 5");
+        btnconsulta3.setText("Consulta 3");
 
         btnconsulta6.setText("Consulta 6");
 
@@ -98,7 +98,7 @@ public class Consulta extends javax.swing.JFrame {
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnconsulta2)
-                            .addComponent(btnconsulta5)
+                            .addComponent(btnconsulta3)
                             .addComponent(btnconsulta6))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
@@ -107,13 +107,13 @@ public class Consulta extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(104, 104, 104)
+                .addGap(32, 32, 32)
                 .addComponent(btnconsulta2)
-                .addGap(11, 11, 11)
-                .addComponent(btnconsulta5)
+                .addGap(18, 18, 18)
+                .addComponent(btnconsulta3)
                 .addGap(18, 18, 18)
                 .addComponent(btnconsulta6)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,7 +161,7 @@ public class Consulta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnconsulta2;
-    public javax.swing.JButton btnconsulta5;
+    public javax.swing.JButton btnconsulta3;
     public javax.swing.JButton btnconsulta6;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JMenu jMenu1;

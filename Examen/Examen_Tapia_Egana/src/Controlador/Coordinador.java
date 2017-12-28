@@ -46,7 +46,7 @@ public class Coordinador implements ActionListener, MouseListener {
         _modificarModificar,
        
         _consulta2,
-        _consulta5,
+        _consulta3,
         _consulta6
     }
 
@@ -191,9 +191,9 @@ public class Coordinador implements ActionListener, MouseListener {
 //
         this.vistaConsulta.btnconsulta2.setActionCommand("_consulta2");
         this.vistaConsulta.btnconsulta2.addActionListener(this);
-//
-//        this.vistaConsulta.btnconsulta5.setActionCommand("_consulta5");
-//        this.vistaConsulta.btnconsulta5.addActionListener(this);
+
+        this.vistaConsulta.btnconsulta3.setActionCommand("_consulta3");
+        this.vistaConsulta.btnconsulta3.addActionListener(this);
 //
 //        this.vistaConsulta.btnconsulta6.setActionCommand("_consulta6");
 //        this.vistaConsulta.btnconsulta6.addActionListener(this);
@@ -366,14 +366,14 @@ public class Coordinador implements ActionListener, MouseListener {
                 this.vistaMostrar.setVisible(true);
                 this.vistaMostrar.tablaproducto.setModel(this.modelo.consulta2());
                 break;
-//                
-//            case _consulta5:
-//                if (this.modelo.consulta5()) {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 2 Ejecutada, Pelicula(s) Eliminadas");
-//                } else {
-//                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 2 No Ejecutada, Pelicula(s) No Eliminadas.");
-//                }
-//                break;
+                
+            case _consulta3:
+                if (this.modelo.consulta3()) {
+                    JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 3 Ejecutada, Empleados(s) Eliminadas");
+                } else {
+                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 3 No Ejecutada, Empleados(s) No Eliminadas.");
+                }
+                break;
 //
 //            case _consulta6:
 //                if (this.modelo.consulta6()) {
