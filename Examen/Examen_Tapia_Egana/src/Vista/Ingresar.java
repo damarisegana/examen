@@ -48,6 +48,7 @@ public class Ingresar extends javax.swing.JFrame {
         txtsueldobruto = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtmail = new javax.swing.JTextField();
+        btnlimpiar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menusalir = new javax.swing.JMenuItem();
@@ -107,6 +108,8 @@ public class Ingresar extends javax.swing.JFrame {
         jLabel8.setText("Sueldo Bruto");
 
         jLabel10.setText("Email");
+
+        btnlimpiar.setText("Limpiar");
 
         jMenu1.setText("Archivo");
 
@@ -184,7 +187,6 @@ public class Ingresar extends javax.swing.JFrame {
                         .addComponent(combodepartamento, 0, 204, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(207, 207, 207)
                                 .addComponent(btningresar))
@@ -196,14 +198,21 @@ public class Ingresar extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
                                 .addComponent(comboestadocivil, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnlimpiar)
+                        .addGap(78, 78, 78))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(btnlimpiar))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -298,6 +307,7 @@ public class Ingresar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btningresar;
+    public javax.swing.JButton btnlimpiar;
     public javax.swing.JComboBox<String> combodepartamento;
     public javax.swing.JComboBox<String> comboestadocivil;
     public javax.swing.JLabel jLabel1;

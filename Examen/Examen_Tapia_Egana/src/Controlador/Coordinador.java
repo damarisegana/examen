@@ -173,7 +173,9 @@ public class Coordinador implements ActionListener, MouseListener {
 
         this.vistaIngresar.btningresar.setActionCommand("_ingresarIngresar");
         this.vistaIngresar.btningresar.addActionListener(this);
-
+        
+        this.vistaIngresar.btnlimpiar.setActionCommand("_ingresarLimpiar");
+        this.vistaIngresar.btnlimpiar.addActionListener(this);
 
         this.vistaModificar.btnseleccionarCod.setActionCommand("_modificarSeleccionar");
         this.vistaModificar.btnseleccionarCod.addActionListener(this);
