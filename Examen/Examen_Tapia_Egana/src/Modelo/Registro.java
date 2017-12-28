@@ -452,5 +452,80 @@ public class Registro extends Conexion.Conexion {
         }
         return false;
     }
+    
+    public boolean validarNombre(String nombre) {
+        if (nombre.equals("")) {
+            JOptionPane.showMessageDialog(null, "Error: Ingrese Nombre");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public boolean validarCodigo(String codigo) {
+        int validacioncodigo=0;
+        String existeCodigo="";
+        
+        if (codigo.equals("")) {
+            JOptionPane.showMessageDialog(null, "Error: Ingrese Código.");
+            return false;
+        } else if (!codigo.equals("")) {
+            try {
+                float validacodigo = Float.parseFloat(codigo);
+                validacioncodigo = 1;
+            } catch (NumberFormatException f) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico mayor a 0 o menor o igual 100");
+            }
+        }
 
+        if (validacioncodigo == 1) {
+            int codigonum = Integer.parseInt(codigo);
+            
+            if (codigonum <= 0 || codigonum > 100) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Codigo Númerico mayor a 0 o menor o igual 100");
+                return false;
+            } else if (codigonum > 0 && codigonum <= 100) {
+                try {
+                    //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
+                    PreparedStatement pstm = this.getConexion().prepareStatement("SELECT codigo FROM empleados where codigo =" + codigo + ";");
+                    ResultSet res = pstm.executeQuery();
+                    int i = 0;
+                    while (res.next()) {
+                        existeCodigo = res.getString("codigo");
+                        i++;
+                    }
+                    res.close();
+                } catch (SQLException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+
+            if (!existeCodigo.equals("")) {
+                JOptionPane.showMessageDialog(null, "Error: Código ingresado ya existe");
+                return false;
+    }
+
+} return false;
+
+    }
+    
+    public boolean validarRut (String rut){
+        if (rut.equals(""))   {
+             JOptionPane.showMessageDialog(null, "Error: Ingrese Run.");
+            return false;
+    } else {return true;}
 }
+    
+    public boolean validarApellido (String apellido){
+        if (apellido.equals("")) {
+                JOptionPane.showMessageDialog(null, "Error: Ingrese Apellido.");
+                return false;
+    } else { return true;}
+        
+    }
+    
+    public boolean validarCelular (String celular){
+    return false;
+    }
+}
+       
