@@ -8,9 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-//Ver nombre de las bases.
-//modificar sql
-//ver las validaciones.
 public class Registro extends Conexion.Conexion {
 
     private String[] columNames = {"Código", "Rut", "Nombre", "Apellido", "Celular", "Email", "Sueldo Bruto", "Estado Civil", "Departamento"};
@@ -36,7 +33,7 @@ public class Registro extends Conexion.Conexion {
             int celularint = Integer.parseInt(celular);
             int sueldoint = Integer.parseInt(sueldo);
             String q = " INSERT INTO empleados ( codigo , rut, nombre, apellido, celular, email, sueldo_bruto, est_civil, nom_depto) "
-                    + "VALUES (" + codigoint + ",'" + rut + "','" + nombre + "','" + apellido + "'," + celular + ",'" + mail + "'," + sueldo + ",'" + estadoCivil + "','" + departamento + "');";
+                    + "VALUES (" + codigoint + ",'" + rut + "','" + nombre + "','" + apellido + "'," + celular + ",'" + mail + "'," + sueldo + ",'" + eCivil + "','" + departamento + "');";
             //se ejecuta la consulta
             try {
                 if (this.getConexion() == null) {
@@ -155,9 +152,18 @@ public class Registro extends Conexion.Conexion {
     }
 
     public boolean ModificarEmp(String codigo, String nombre, String apellido, String rut, String sueldo, String celular, String mail, int estadoCivil, String departamento) {
-
+        String eCivil = "";
         if (validarTodoMenosCodigo(rut, nombre, apellido, celular, mail, sueldo, estadoCivil, departamento)) {
-            String q = " UPDATE empleados SET nombre = '" + nombre + "' , rut = '" + rut + "' , apellido = '" + apellido + "', celular=" + celular + ", email='" + mail + "', sueldo_bruto=" + sueldo + ", est_civil='" + estadoCivil + "', nom_depto='" + departamento + "' WHERE codigo =" + codigo + ";";
+
+            if (estadoCivil == 1) {
+                eCivil = "C";
+            } else if (estadoCivil == 2) {
+                eCivil = "S";
+            } else {
+                eCivil = "V";
+            }
+
+            String q = " UPDATE empleados SET nombre = '" + nombre + "' , rut = '" + rut + "' , apellido = '" + apellido + "', celular=" + celular + ", email='" + mail + "', sueldo_bruto=" + sueldo + ", est_civil='" + eCivil + "', nom_depto='" + departamento + "' WHERE codigo =" + codigo + ";";
             try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(q);
                 pstm.execute();
@@ -276,10 +282,10 @@ public class Registro extends Conexion.Conexion {
         if (nombre.equals("")) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese Nombre");
             return false;
-        } else if (nombre.length()>20){
-         JOptionPane.showMessageDialog(null, "Error: Nombre no puede superar los 20 caractéres.");
+        } else if (nombre.length() > 20) {
+            JOptionPane.showMessageDialog(null, "Error: Nombre no puede superar los 20 caractéres.");
             return false;
-        } else{       
+        } else {
             return true;
         }
     }
@@ -365,9 +371,9 @@ public class Registro extends Conexion.Conexion {
     public boolean validarRut(String rut) {
         if (rut.equals("")) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese Run.");
-            return false;}
-             else if (rut.length()>10){
-         JOptionPane.showMessageDialog(null, "Error: Rut no puede superar los 10 caractéres.");
+            return false;
+        } else if (rut.length() > 10) {
+            JOptionPane.showMessageDialog(null, "Error: Rut no puede superar los 10 caractéres.");
             return false;
         } else {
             return true;
@@ -377,12 +383,11 @@ public class Registro extends Conexion.Conexion {
     public boolean validarApellido(String apellido) {
         if (apellido.equals("")) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese Apellido.");
-            return false;}
-             else if (apellido.length()>20){
-         JOptionPane.showMessageDialog(null, "Error: Apellido no puede superar los 20 caractéres.");
             return false;
-        }
-         else {
+        } else if (apellido.length() > 20) {
+            JOptionPane.showMessageDialog(null, "Error: Apellido no puede superar los 20 caractéres.");
+            return false;
+        } else {
             return true;
         }
 
@@ -405,7 +410,7 @@ public class Registro extends Conexion.Conexion {
         if (validacionsueldo == 1) {
             int sueldonum = Integer.parseInt(sueldo);
             if (sueldonum >= 120000 && sueldonum < 10000000) {
-                return true; 
+                return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Error: Ingrese Sueldo Igual o Mayor a $120.000 y menor a $10.000.000");
                 return false;
@@ -442,9 +447,9 @@ public class Registro extends Conexion.Conexion {
     public boolean validarMail(String mail) {
         if (mail.equals("")) {
             JOptionPane.showMessageDialog(null, "Error: Ingrese Mail");
-            return false;}
-             else if (mail.length()>30){
-         JOptionPane.showMessageDialog(null, "Error: Mail no puede superar los 30 caractéres.");
+            return false;
+        } else if (mail.length() > 30) {
+            JOptionPane.showMessageDialog(null, "Error: Mail no puede superar los 30 caractéres.");
             return false;
         } else {
             return true;
