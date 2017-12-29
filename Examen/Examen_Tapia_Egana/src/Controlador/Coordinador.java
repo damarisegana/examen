@@ -44,7 +44,6 @@ public class Coordinador implements ActionListener, MouseListener {
         _ingresarLimpiar,
         _modificarSeleccionar,
         _modificarModificar,
-       
         _consulta2,
         _consulta3,
         _consulta4
@@ -130,10 +129,9 @@ public class Coordinador implements ActionListener, MouseListener {
 
         this.vistaConsulta.menumostrar.setActionCommand("_menuMostrar");
         this.vistaConsulta.menumostrar.addActionListener(this);
-        
+
         this.vistaMostrar.menumostrar.setActionCommand("_menuMostrar");
         this.vistaMostrar.menumostrar.addActionListener(this);
-        
 
         //menumodificar
         this.vistaInicio.menumodificar.setActionCommand("_menuModificar");
@@ -176,7 +174,7 @@ public class Coordinador implements ActionListener, MouseListener {
 
         this.vistaIngresar.btningresar.setActionCommand("_ingresarIngresar");
         this.vistaIngresar.btningresar.addActionListener(this);
-        
+
         this.vistaIngresar.btnlimpiar.setActionCommand("_ingresarLimpiar");
         this.vistaIngresar.btnlimpiar.addActionListener(this);
 
@@ -206,7 +204,7 @@ public class Coordinador implements ActionListener, MouseListener {
             case _menuSalir:
                 System.exit(0);
                 break;
-                
+
             case _menuBuscarEliminar:
                 this.vistaInicio.setVisible(false);
                 this.vistaIngresar.setVisible(false);
@@ -215,7 +213,7 @@ public class Coordinador implements ActionListener, MouseListener {
                 this.vistaModificar.setVisible(false);
                 this.vistaBuscarEliminar.setVisible(true);
                 break;
-                
+
             case _menuIngresar:
                 this.vistaInicio.setVisible(false);
                 this.vistaBuscarEliminar.setVisible(false);
@@ -224,7 +222,7 @@ public class Coordinador implements ActionListener, MouseListener {
                 this.vistaModificar.setVisible(false);
                 this.vistaIngresar.setVisible(true);
                 break;
-                
+
             case _menuModificar:
                 this.vistaInicio.setVisible(false);
                 this.vistaBuscarEliminar.setVisible(false);
@@ -233,7 +231,7 @@ public class Coordinador implements ActionListener, MouseListener {
                 this.vistaMostrar.setVisible(false);
                 this.vistaModificar.setVisible(true);
                 break;
-                
+
             case _menuMostrar:
                 this.vistaInicio.setVisible(false);
                 this.vistaConsulta.setVisible(false);
@@ -243,7 +241,7 @@ public class Coordinador implements ActionListener, MouseListener {
                 this.vistaMostrar.setVisible(true);
                 this.vistaMostrar.tablaproducto.setModel(this.modelo.MostrarEmp());
                 break;
-                
+
             case _menuConsulta:
                 this.vistaConsulta.setVisible(true);
                 this.vistaInicio.setVisible(false);
@@ -252,23 +250,20 @@ public class Coordinador implements ActionListener, MouseListener {
                 this.vistaMostrar.setVisible(false);
                 this.vistaModificar.setVisible(false);
                 break;
-                
+
             case _buscarEliminarBuscar:
-                if (this.modelo.Validar2(this.vistaBuscarEliminar.txtcodigo_buscar.getText())) {
-                    this.vistaBuscarEliminar.tablaproductos.setModel(this.modelo.BuscarEmp((this.vistaBuscarEliminar.txtcodigo_buscar.getText())));
-                }
+                this.vistaBuscarEliminar.tablaproductos.setModel(this.modelo.BuscarEmp((this.vistaBuscarEliminar.txtcodigo_buscar.getText())));
                 break;
-                
+
             case _buscarEliminarEliminar:
                 if (this.modelo.EliminarEmp(this.vistaBuscarEliminar.txtcodigo_buscar.getText())) {
                     JOptionPane.showMessageDialog(vistaBuscarEliminar, "Exito: Registro Eliminado.");
                     this.vistaBuscarEliminar.tablaproductos.setModel(this.modelo.MostrarEmp());
                     this.vistaBuscarEliminar.txtcodigo_buscar.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(vistaBuscarEliminar, "Error: Registro no fue Eliminado.");
                 }
+
                 break;
-                
+
             case _ingresarIngresar:
                 if (this.modelo.IngresarEmp(
                         (this.vistaIngresar.txtcodigo.getText()),
@@ -293,7 +288,7 @@ public class Coordinador implements ActionListener, MouseListener {
                     this.vistaIngresar.combodepartamento.setSelectedIndex(0);
                 }
                 break;
-                
+
             case _ingresarLimpiar:
                 this.vistaIngresar.txtcodigo.setText("");
                 this.vistaIngresar.txtnombre.setText("");
@@ -309,37 +304,39 @@ public class Coordinador implements ActionListener, MouseListener {
 
             case _modificarSeleccionar:
                 this.vistaModificar.tablita.setVisible(false);
-                if (this.modelo.Validar2(this.vistaModificar.txtcodigo.getText())) {
-                    this.modelo.BuscarEmp(this.vistaModificar.txtcodigo.getText());
-                    this.vistaModificar.tablita.setModel(this.modelo.BuscarEmp((this.vistaModificar.txtcodigo.getText())));
-           
-                    this.vistaModificar.txtrun.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 1)));
-                    this.vistaModificar.txtnombre.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 2)));
-                    this.vistaModificar.txtapellido.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 3)));
-                    this.vistaModificar.txtcelular.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 4)));
-                    this.vistaModificar.txtmail.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 5)));
-                    this.vistaModificar.txtsueldobruto.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 6)));
-                    if (String.valueOf(this.vistaModificar.tablita.getValueAt(0, 7)).equals("C")) {
-                        this.vistaModificar.comboestadocivil.setSelectedIndex(1);
-                    } else if (String.valueOf(this.vistaModificar.tablita.getValueAt(0, 7)).equals("S")) {
-                        this.vistaModificar.comboestadocivil.setSelectedIndex(2);
+                if (this.modelo.validarCodigo(this.vistaModificar.txtcodigo.getText())) {
+                    if (this.modelo.existeCodigo(this.vistaModificar.txtcodigo.getText())) {
+                        this.modelo.BuscarEmp(this.vistaModificar.txtcodigo.getText());
+                        this.vistaModificar.tablita.setModel(this.modelo.BuscarEmp((this.vistaModificar.txtcodigo.getText())));
+                        this.vistaModificar.txtrun.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 1)));
+                        this.vistaModificar.txtnombre.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 2)));
+                        this.vistaModificar.txtapellido.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 3)));
+                        this.vistaModificar.txtcelular.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 4)));
+                        this.vistaModificar.txtmail.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 5)));
+                        this.vistaModificar.txtsueldobruto.setText(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 6)));
+                        if (String.valueOf(this.vistaModificar.tablita.getValueAt(0, 7)).equals("C")) {
+                            this.vistaModificar.comboestadocivil.setSelectedIndex(1);
+                        } else if (String.valueOf(this.vistaModificar.tablita.getValueAt(0, 7)).equals("S")) {
+                            this.vistaModificar.comboestadocivil.setSelectedIndex(2);
+                        } else {
+                            this.vistaModificar.comboestadocivil.setSelectedIndex(3);
+                        }
+                        this.vistaModificar.combodepartamento.setSelectedItem(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 8)));
                     } else {
-                        this.vistaModificar.comboestadocivil.setSelectedIndex(3);
+                        this.vistaModificar.txtcodigo.setText("");
                     }
-                    this.vistaModificar.combodepartamento.setSelectedItem(String.valueOf(this.vistaModificar.tablita.getValueAt(0, 8)));
                 }
-                break;
-//Código", "Rut","Nombre", "Apellido", "Celular", "Email", "Sueldo Bruto", "Estado Civil", "Departamento"
 
+                break;
             case _modificarModificar:
                 if (this.modelo.ModificarEmp(
                         this.vistaModificar.txtcodigo.getText(),
-                        this.vistaModificar.txtrun.getText(),
                         this.vistaModificar.txtnombre.getText(),
                         this.vistaModificar.txtapellido.getText(),
+                        this.vistaModificar.txtrun.getText(),
+                        this.vistaModificar.txtsueldobruto.getText(),
                         this.vistaModificar.txtcelular.getText(),
                         this.vistaModificar.txtmail.getText(),
-                        this.vistaModificar.txtsueldobruto.getText(),
                         this.vistaModificar.comboestadocivil.getSelectedIndex(),
                         this.vistaModificar.combodepartamento.getSelectedItem().toString()
                 )) {
@@ -356,7 +353,6 @@ public class Coordinador implements ActionListener, MouseListener {
                 }
                 break;
 
- 
             case _consulta2:
                 this.vistaInicio.setVisible(false);
                 this.vistaConsulta.setVisible(false);
@@ -366,7 +362,7 @@ public class Coordinador implements ActionListener, MouseListener {
                 this.vistaMostrar.setVisible(true);
                 this.vistaMostrar.tablaproducto.setModel(this.modelo.consulta2());
                 break;
-                
+
             case _consulta3:
                 if (this.modelo.consulta3()) {
                     JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 3 Ejecutada, Empleados(s) Eliminados");
@@ -379,34 +375,42 @@ public class Coordinador implements ActionListener, MouseListener {
                 if (this.modelo.consulta4()) {
                     JOptionPane.showMessageDialog(vistaModificar, "Exito: Consulta 4 Ejecutada, Sueldos Brutos Actualizado.");
                 } else {
-                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 4 Ejecutada, Sueldos Brutos No Actualizado");
+                    JOptionPane.showMessageDialog(vistaModificar, "Error: Consulta 4 No Ejecutada, Sueldos Brutos No Actualizado");
                 }
                 break;
 
         }
     }
 
-    Coordinador(Inicio inicio, Ingresar ingresar, Buscar_Eliminar buscar_Eliminar, Modificar modificar, Listar mostrar) {
+    Coordinador(Inicio inicio,
+             Ingresar ingresar, Buscar_Eliminar buscar_Eliminar,
+             Modificar modificar, Listar mostrar
+    ) {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e
+    ) {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e
+    ) {
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(MouseEvent e
+    ) {
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
+    public void mouseEntered(MouseEvent e
+    ) {
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
+    public void mouseExited(MouseEvent e
+    ) {
     }
 
 }
