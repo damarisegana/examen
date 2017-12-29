@@ -340,16 +340,16 @@ public class Coordinador implements ActionListener, MouseListener {
                         this.vistaModificar.comboestadocivil.getSelectedIndex(),
                         this.vistaModificar.combodepartamento.getSelectedItem().toString()
                 )) {
+                    this.vistaModificar.txtcodigo.setText("");
+                    this.vistaModificar.txtnombre.setText("");
+                    this.vistaModificar.txtapellido.setText("");
+                    this.vistaModificar.txtrun.setText("");
+                    this.vistaModificar.txtsueldobruto.setText("");
+                    this.vistaModificar.txtcelular.setText("");
+                    this.vistaModificar.txtmail.setText("");
+                    this.vistaModificar.comboestadocivil.setSelectedIndex(0);
+                    this.vistaModificar.combodepartamento.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(vistaModificar, "Exito: Registro modificado.");
-                    this.vistaIngresar.txtcodigo.setText("");
-                    this.vistaIngresar.txtnombre.setText("");
-                    this.vistaIngresar.txtapellido.setText("");
-                    this.vistaIngresar.txtrun.setText("");
-                    this.vistaIngresar.txtsueldobruto.setText("");
-                    this.vistaIngresar.txtcelular.setText("");
-                    this.vistaIngresar.txtmail.setText("");
-                    this.vistaIngresar.comboestadocivil.setSelectedIndex(0);
-                    this.vistaIngresar.combodepartamento.setSelectedIndex(0);
                 }
                 break;
 
@@ -383,8 +383,8 @@ public class Coordinador implements ActionListener, MouseListener {
     }
 
     Coordinador(Inicio inicio,
-             Ingresar ingresar, Buscar_Eliminar buscar_Eliminar,
-             Modificar modificar, Listar mostrar
+            Ingresar ingresar, Buscar_Eliminar buscar_Eliminar,
+            Modificar modificar, Listar mostrar
     ) {
     }
 
